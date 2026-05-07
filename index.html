@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Máquina de Vendas Online — Aprenda a Vender no Facebook, Instagram e WhatsApp</title>
+<meta name="description" content="Descubra o método simples que pequenos negócios estão usando para atrair clientes todos os dias usando apenas Facebook, Instagram e WhatsApp — mesmo começando do zero.">
+
+<!-- ============================================
+     META PIXEL — SUBSTITUA xxxxxxxxxxxx PELO SEU ID
+     ============================================ -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '980073521166360');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=980073521166360&ev=PageView&noscript=1"
+/></noscript>
+<!-- ============================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --g: #22c55e;
+  --g2: #16a34a;
+  --g3: #bbf7d0;
+  --y: #facc15;
+  --r: #ef4444;
+  --dark: #0a0a0a;
+  --dark2: #111111;
+  --dark3: #1a1a1a;
+  --dark4: #222222;
+  --border: rgba(255,255,255,0.08);
+  --text: #f0f0f0;
+  --muted: #888;
+  --serif: 'Bebas Neue', impact, sans-serif;
+  --body: 'Barlow', sans-serif;
+  --cond: 'Barlow Condensed', sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  background:var(--dark);
+  color:var(--text);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ── UTILITY ── */
+.container{width:100%;max-width:720px;margin:0 auto;padding:0 20px}
+.container--wide{max-width:960px}
+.green{color:var(--g)}
+.yellow{color:var(--y)}
+.red{color:var(--r)}
+.bold{font-weight:700}
+
+/* ── NOTIFICATION POPUP ── */
+#notif-popup {
+  position:fixed;
+  bottom:20px;left:20px;
+  z-index:9999;
+  background:#1a1a1a;
+  border:1px solid rgba(34,197,94,0.4);
+  border-radius:12px;
+  padding:14px 18px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  max-width:280px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.6);
+  transform:translateX(-360px);
+  transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+  pointer-events:none;
+}
+#notif-popup.show{transform:translateX(0)}
+.notif-avatar{
+  width:42px;height:42px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--g),#065f46);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;
+}
+.notif-text{font-size:12px;line-height:1.5}
+.notif-text strong{color:var(--g);display:block;font-size:13px}
+.notif-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--g);
+  animation:pulse-dot 2s infinite;
+  flex-shrink:0;
+  margin-left:auto;
+}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+
+/* ── STICKY BAR ── */
+#sticky-bar{
+  position:fixed;top:0;left:0;right:0;
+  z-index:1000;
+  background:var(--g);
+  color:#000;
+  padding:10px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  font-family:var(--body);
+  font-weight:700;
+  font-size:13px;
+  transform:translateY(-60px);
+  transition:transform 0.3s ease;
+  flex-wrap:wrap;
+}
+#sticky-bar.visible{transform:translateY(0)}
+.sticky-cta{
+  background:#000;
+  color:var(--g);
+  padding:6px 16px;
+  border-radius:50px;
+  font-size:12px;
+  white-space:nowrap;
+  cursor:pointer;
+}
+
+/* ── URGENCY BAR (top) ── */
+.urgency-bar{
+  background:linear-gradient(90deg,#7c2d12,#dc2626,#7c2d12);
+  background-size:200% 100%;
+  animation:shimmer-bg 3s ease infinite;
+  padding:10px 20px;
+  text-align:center;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:0.04em;
+  margin-top:0;
+}
+@keyframes shimmer-bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+/* ── HERO ── */
+.hero{
+  background:var(--dark2);
+  padding:80px 0 60px;
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--border);
+}
+.hero::before{
+  content:'';
+  position:absolute;top:-200px;right:-200px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(34,197,94,0.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'';
+  position:absolute;bottom:-100px;left:-100px;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(250,204,21,0.05) 0%,transparent 70%);
+  pointer-events:none;
+}
+.badge-top{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(34,197,94,0.12);
+  border:1px solid rgba(34,197,94,0.3);
+  color:var(--g);
+  padding:6px 16px;
+  border-radius:50px;
+  font-size:12px;font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;
+  margin-bottom:24px;
+}
+.badge-top::before{content:'●';font-size:8px;animation:pulse-dot 2s infinite}
+.hero-headline{
+  font-family:var(--serif);
+  font-size:clamp(2.4rem,8vw,4rem);
+  line-height:1.0;
+  color:#fff;
+  margin-bottom:20px;
+  text-transform:uppercase;
+  letter-spacing:0.01em;
+}
+.hero-sub{
+  font-size:clamp(15px,3.5vw,18px);
+  color:#ccc;
+  max-width:580px;
+  margin-bottom:32px;
+  line-height:1.75;
+}
+.hero-proof{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:36px;
+  flex-wrap:wrap;
+}
+.stars{color:var(--y);font-size:20px;letter-spacing:2px}
+.proof-text{font-size:14px;color:var(--muted)}
+.proof-text strong{color:var(--text)}
+.hero-features{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:36px;
+}
+.hero-feat{
+  display:flex;align-items:center;gap:6px;
+  font-size:14px;color:#aaa;
+}
+.hero-feat::before{content:'✓';color:var(--g);font-weight:700}
+
+.cta-primary{
+  display:block;
+  width:100%;
+  background:linear-gradient(135deg,#16a34a,#22c55e);
+  color:#fff;
+  text-align:center;
+  font-family:var(--body);
+  font-size:clamp(16px,4vw,22px);
+  font-weight:900;
+  padding:22px 32px;
+  border-radius:14px;
+  border:none;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  text-transform:uppercase;
+  letter-spacing:0.03em;
+  box-shadow:0 8px 40px rgba(34,197,94,0.35);
+  transition:transform 0.15s ease, box-shadow 0.15s ease;
+  line-height:1.2;
+}
+.cta-primary:hover{transform:translateY(-2px);box-shadow:0 12px 50px rgba(34,197,94,0.45)}
+.cta-primary:active{transform:translateY(0)}
+.cta-primary::after{
+  content:'';
+  position:absolute;
+  top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);
+  animation:cta-shine 2.5s ease infinite;
+}
+@keyframes cta-shine{0%{left:-100%}100%{left:200%}}
+.cta-sub{
+  text-align:center;
+  font-size:12px;
+  color:var(--muted);
+  margin-top:10px;
+}
+.cta-sub span{color:var(--g)}
+
+/* ── PRICE BLOCK ── */
+.price-block{
+  background:var(--dark3);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px;
+  margin:28px 0;
+  text-align:center;
+}
+.price-original{
+  font-size:16px;
+  color:var(--muted);
+  text-decoration:line-through;
+}
+.price-now{
+  font-family:var(--serif);
+  font-size:3.5rem;
+  color:var(--g);
+  line-height:1;
+  margin:6px 0;
+}
+.price-installment{font-size:13px;color:#aaa}
+.price-badge{
+  display:inline-block;
+  background:var(--r);
+  color:#fff;
+  font-size:11px;font-weight:700;
+  padding:3px 10px;border-radius:50px;
+  margin-bottom:8px;letter-spacing:0.06em;
+}
+
+/* ── COUNTDOWN ── */
+.countdown-wrap{
+  background:var(--dark3);
+  border:1px solid rgba(239,68,68,0.3);
+  border-radius:12px;
+  padding:20px;
+  text-align:center;
+  margin:24px 0;
+}
+.countdown-label{
+  font-size:12px;
+  color:var(--r);
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  margin-bottom:12px;
+}
+.countdown-timer{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+}
+.cd-block{
+  background:rgba(239,68,68,0.1);
+  border:1px solid rgba(239,68,68,0.3);
+  border-radius:10px;
+  padding:12px 10px 8px;
+  min-width:64px;
+  text-align:center;
+}
+.cd-num{
+  font-family:var(--serif);
+  font-size:2.2rem;
+  color:#fff;
+  line-height:1;
+  display:block;
+}
+.cd-label{
+  font-size:10px;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  margin-top:4px;
+  display:block;
+}
+.cd-sep{
+  font-family:var(--serif);
+  font-size:2rem;
+  color:var(--r);
+  align-self:center;
+  margin-top:-8px;
+}
+
+/* ── SECTIONS ── */
+section{padding:60px 0;border-bottom:1px solid var(--border)}
+.section-eyebrow{
+  font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.12em;
+  color:var(--g);margin-bottom:10px;
+}
+.section-title{
+  font-family:var(--serif);
+  font-size:clamp(1.8rem,6vw,3rem);
+  text-transform:uppercase;
+  line-height:1.05;
+  color:#fff;margin-bottom:16px;
+}
+.section-subtitle{
+  font-size:16px;color:#aaa;
+  line-height:1.8;margin-bottom:36px;
+}
+
+/* ── PAIN ── */
+.pain-list{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.pain-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:16px;
+  background:rgba(239,68,68,0.06);
+  border:1px solid rgba(239,68,68,0.15);
+  border-radius:12px;
+  font-size:15px;color:#ccc;
+}
+.pain-item .icon{font-size:20px;flex-shrink:0;margin-top:1px}
+
+/* ── FUNNEL ── */
+.funnel-visual{
+  display:flex;flex-direction:column;gap:0;
+  position:relative;
+  margin:32px 0;
+}
+.funnel-step{
+  display:flex;align-items:center;gap:16px;
+  padding:20px 24px;
+  border-radius:12px;
+  position:relative;
+}
+.funnel-step+.funnel-step{margin-top:4px}
+.funnel-top{background:rgba(24,119,242,0.15);border:1px solid rgba(24,119,242,0.3)}
+.funnel-mid{background:rgba(250,204,21,0.08);border:1px solid rgba(250,204,21,0.25)}
+.funnel-bot{background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3)}
+.funnel-icon{font-size:28px;width:44px;text-align:center;flex-shrink:0}
+.funnel-label{font-weight:700;color:#fff;font-size:15px}
+.funnel-sub{font-size:13px;color:var(--muted);margin-top:2px}
+.funnel-arrow{
+  text-align:center;color:var(--muted);
+  font-size:20px;line-height:1;
+  padding:2px 0;
+}
+
+/* ── WHAT YOU GET ── */
+.product-card{
+  background:var(--dark3);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:28px;
+  margin-bottom:16px;
+  position:relative;
+  overflow:hidden;
+}
+.product-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--g),#16a34a);
+}
+.product-card h3{
+  font-size:17px;font-weight:800;color:#fff;
+  margin-bottom:16px;display:flex;align-items:center;gap:10px;
+}
+.product-card ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.product-card li{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:14px;color:#bbb;
+}
+.product-card li::before{content:'✓';color:var(--g);font-weight:700;flex-shrink:0;margin-top:1px}
+
+/* ── BONUS ── */
+.bonus-grid{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.bonus-card{
+  display:flex;gap:16px;
+  background:var(--dark3);
+  border:1px solid rgba(250,204,21,0.2);
+  border-radius:14px;
+  padding:20px;
+  position:relative;
+  overflow:hidden;
+}
+.bonus-card::before{
+  content:'';
+  position:absolute;top:0;left:0;bottom:0;width:3px;
+  background:var(--y);
+}
+.bonus-num{
+  flex-shrink:0;
+  width:40px;height:40px;
+  background:rgba(250,204,21,0.15);
+  border:1px solid rgba(250,204,21,0.3);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);
+  font-size:1.2rem;color:var(--y);
+}
+.bonus-content h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:4px}
+.bonus-content p{font-size:13px;color:#aaa;line-height:1.7}
+.bonus-value{
+  margin-left:auto;flex-shrink:0;
+  font-size:11px;font-weight:700;
+  color:var(--y);
+  background:rgba(250,204,21,0.1);
+  border:1px solid rgba(250,204,21,0.2);
+  padding:4px 10px;border-radius:50px;
+  height:fit-content;white-space:nowrap;
+}
+
+/* ── OBJECTION ── */
+.objection-box{
+  background:linear-gradient(135deg,rgba(34,197,94,0.1),rgba(34,197,94,0.04));
+  border:1px solid rgba(34,197,94,0.25);
+  border-radius:16px;
+  padding:28px;
+  margin-bottom:16px;
+}
+.objection-box .q{
+  font-size:16px;font-weight:700;color:var(--g);
+  margin-bottom:10px;
+}
+.objection-box .a{font-size:15px;color:#ccc;line-height:1.8}
+
+/* ── TESTIMONIALS ── */
+.testi-grid{display:flex;flex-direction:column;gap:14px}
+.testi-card{
+  background:var(--dark3);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+}
+.testi-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.testi-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--g),#065f46);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;
+}
+.testi-name{font-weight:700;color:#fff;font-size:14px}
+.testi-role{font-size:12px;color:var(--muted)}
+.testi-stars{color:var(--y);font-size:14px;margin-bottom:8px}
+.testi-text{font-size:14px;color:#bbb;line-height:1.75;font-style:italic}
+
+/* ── ORDER BUMP ── */
+.order-bump{
+  background:var(--dark3);
+  border:2px dashed var(--y);
+  border-radius:20px;
+  padding:24px;
+  margin:32px 0;
+  position:relative;
+}
+.order-bump-badge{
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  background:var(--y);
+  color:#000;
+  font-size:11px;font-weight:800;
+  padding:4px 16px;border-radius:50px;
+  white-space:nowrap;letter-spacing:0.06em;
+  text-transform:uppercase;
+}
+.order-bump h3{
+  font-size:17px;font-weight:800;color:#fff;
+  margin-bottom:8px;
+  margin-top:8px;
+}
+.order-bump-sub{font-size:13px;color:#aaa;margin-bottom:16px;line-height:1.7}
+.order-bump-products{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.ob-product{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:12px;
+  background:rgba(250,204,21,0.05);
+  border:1px solid rgba(250,204,21,0.15);
+  border-radius:10px;
+  font-size:13px;color:#ccc;
+}
+.ob-product-icon{font-size:20px;flex-shrink:0}
+.ob-product-title{font-weight:700;color:#fff;font-size:13px;display:block;margin-bottom:2px}
+.order-bump-price{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:16px;flex-wrap:wrap;
+}
+.ob-original{color:var(--muted);text-decoration:line-through;font-size:14px}
+.ob-price{font-family:var(--serif);font-size:2rem;color:var(--y);line-height:1}
+.ob-economy{font-size:12px;color:var(--g);font-weight:700}
+
+/* ── CHECKBOX TOGGLE ── */
+.checkbox-label{
+  display:flex;align-items:flex-start;gap:12px;
+  cursor:pointer;
+  padding:16px;
+  background:rgba(250,204,21,0.08);
+  border:1px solid rgba(250,204,21,0.25);
+  border-radius:12px;
+  transition:all 0.2s;
+}
+.checkbox-label:hover{background:rgba(250,204,21,0.12)}
+.checkbox-label input{display:none}
+.custom-checkbox{
+  width:24px;height:24px;flex-shrink:0;
+  border:2px solid var(--y);
+  border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  background:transparent;
+  transition:all 0.2s;
+  margin-top:1px;
+}
+.custom-checkbox.checked{background:var(--y)}
+.custom-checkbox.checked::after{
+  content:'✓';
+  color:#000;font-weight:900;font-size:14px;
+}
+.checkbox-text{font-size:14px;font-weight:700;color:#fff;line-height:1.5}
+.checkbox-text small{display:block;font-weight:400;color:#aaa;font-size:12px;margin-top:2px}
+
+/* ── GUARANTEE ── */
+.guarantee-box{
+  background:var(--dark3);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:32px;
+  display:flex;
+  gap:20px;
+  align-items:flex-start;
+  margin:32px 0;
+}
+.guarantee-icon{font-size:52px;flex-shrink:0}
+.guarantee-text h3{font-size:18px;font-weight:800;color:#fff;margin-bottom:8px}
+.guarantee-text p{font-size:14px;color:#aaa;line-height:1.75}
+
+/* ── FAQ ── */
+.faq-item{
+  border-bottom:1px solid var(--border);
+  padding:20px 0;
+}
+.faq-q{
+  font-size:15px;font-weight:700;color:#fff;
+  cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:16px;
+}
+.faq-toggle{
+  flex-shrink:0;
+  width:28px;height:28px;
+  background:var(--dark4);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;color:var(--g);
+  transition:transform 0.2s;
+}
+.faq-item.open .faq-toggle{transform:rotate(45deg)}
+.faq-a{
+  display:none;
+  font-size:14px;color:#aaa;line-height:1.8;
+  margin-top:12px;
+}
+.faq-item.open .faq-a{display:block}
+
+/* ── FINAL CTA ── */
+.final-cta-section{
+  background:linear-gradient(180deg,var(--dark2) 0%,rgba(34,197,94,0.05) 100%);
+  padding:80px 0;
+  text-align:center;
+}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--dark2);
+  padding:32px 20px;
+  text-align:center;
+  font-size:12px;
+  color:var(--muted);
+  border-top:1px solid var(--border);
+}
+footer a{color:var(--muted);text-decoration:underline}
+
+/* ── SECURITY BADGES ── */
+.security-badges{
+  display:flex;justify-content:center;gap:16px;
+  flex-wrap:wrap;
+  margin-top:16px;
+}
+.sec-badge{
+  display:flex;align-items:center;gap:6px;
+  font-size:12px;color:var(--muted);
+}
+.sec-badge::before{color:var(--g);font-weight:700}
+
+/* ── ANIMATIONS ── */
+@keyframes fade-up{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.anim{opacity:0;animation:fade-up 0.6s ease forwards}
+.anim-d1{animation-delay:0.1s}
+.anim-d2{animation-delay:0.2s}
+.anim-d3{animation-delay:0.3s}
+.anim-d4{animation-delay:0.4s}
+
+/* ── MOBILE REFINEMENTS ── */
+@media(max-width:600px){
+  .hero{padding:70px 0 48px}
+  section{padding:48px 0}
+  .guarantee-box{flex-direction:column;gap:12px}
+  .guarantee-icon{font-size:40px}
+}
+
+/* ── PULSING ARROW ── */
+.pulse-arrow{
+  text-align:center;
+  font-size:28px;
+  color:var(--g);
+  animation:bounce-arrow 1.2s ease infinite;
+  margin:12px 0;
+}
+@keyframes bounce-arrow{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+/* ── PROGRESS BAR ── */
+#read-progress{
+  position:fixed;top:0;left:0;height:2px;
+  background:var(--g);z-index:9998;
+  width:0%;transition:width 0.1s linear;
+}
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div id="read-progress"></div>
+
+<!-- Sticky bar (appears on scroll) -->
+<div id="sticky-bar">
+  <span>🔥 Oferta por tempo limitado — apenas 197 MT</span>
+  <a class="sticky-cta" href="https://checkout.escalepay.com/9952614" onclick="trackPixel('InitiateCheckout')">Quero Agora →</a>
+</div>
+
+<!-- Notification popup -->
+<div id="notif-popup">
+  <div class="notif-avatar" id="notif-emoji">😊</div>
+  <div class="notif-text">
+    <strong id="notif-name">Maria de Maputo</strong>
+    <span id="notif-msg">acabou de adquirir o ebook</span>
+    <span style="color:var(--muted);font-size:11px" id="notif-time">há 3 minutos</span>
+  </div>
+  <div class="notif-dot"></div>
+</div>
+
+<!-- TOP URGENCY BAR -->
+<div class="urgency-bar">
+  🔥 OFERTA ESPECIAL — Preço aumenta em: <span id="top-cd"></span>
+</div>
+
+<!-- ═══════════════════════════════════
+     HERO
+═══════════════════════════════════ -->
+<section class="hero" style="border-bottom:none">
+  <div class="container">
+    <div class="badge-top anim anim-d1">Novo Método · Resultados em Dias</div>
+
+    <h1 class="hero-headline anim anim-d2">
+      Descubra o método simples que<br>
+      <span class="green">pequenos negócios</span> estão<br>
+      usando para <span class="yellow">atrair clientes</span><br>
+      todos os dias
+    </h1>
+
+    <p class="hero-sub anim anim-d3">
+      Usando apenas <strong>Facebook, Instagram e WhatsApp</strong> — mesmo começando do zero, sem ser especialista, sem site complicado e sem gastar fortunas em anúncios.
+    </p>
+
+    <div class="hero-proof anim anim-d4">
+      <div class="stars">★★★★★</div>
+      <div class="proof-text"><strong>+1.200 pessoas</strong> já aplicaram o método</div>
+    </div>
+
+    <div class="hero-features anim anim-d4">
+      <span class="hero-feat">Acesso imediato</span>
+      <span class="hero-feat">Para iniciantes</span>
+      <span class="hero-feat">Negócios locais</span>
+      <span class="hero-feat">Produtos físicos</span>
+      <span class="hero-feat">100% prático</span>
+    </div>
+
+    <!-- Price -->
+    <div class="price-block">
+      <div class="price-badge">OFERTA DE LANÇAMENTO</div>
+      <div class="price-original">De 497 MT</div>
+      <div class="price-now">197 MT</div>
+      <div class="price-installment">Pagamento único · Acesso vitalício</div>
+    </div>
+
+    <!-- Countdown -->
+    <div class="countdown-wrap">
+      <div class="countdown-label">⚠️ Oferta expira em:</div>
+      <div class="countdown-timer">
+        <div class="cd-block"><span class="cd-num" id="cd-h">00</span><span class="cd-label">Horas</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block"><span class="cd-num" id="cd-m">00</span><span class="cd-label">Min</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block"><span class="cd-num" id="cd-s">00</span><span class="cd-label">Seg</span></div>
+      </div>
+    </div>
+
+    <div class="pulse-arrow">↓</div>
+    <a href="https://checkout.escalepay.com/9952614" onclick="trackPixel('InitiateCheckout')">
+      <button class="cta-primary">
+        🚀 SIM! QUERO A MÁQUINA DE VENDAS POR 197 MT
+      </button>
+    </a>
+    <div class="cta-sub">
+      🔒 Pagamento seguro · <span>Acesso imediato após confirmação</span>
+    </div>
+    <div class="security-badges">
+      <span class="sec-badge">🔒 Checkout Seguro</span>
+      <span class="sec-badge">📱 Acesso no celular</span>
+      <span class="sec-badge">✅ Garantia incluída</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     DOR
+═══════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">Você se identifica?</div>
+    <h2 class="section-title">Por que a maioria dos<br><span class="red">negócios não vende</span><br>nas redes sociais</h2>
+    <div class="section-subtitle">Postar todos os dias e não ver resultado é frustrante. E a culpa não é sua — é falta de estratégia.</div>
+
+    <div class="pain-list">
+      <div class="pain-item"><div class="icon">😤</div>Publica todo dia e recebe quase nenhuma mensagem de clientes</div>
+      <div class="pain-item"><div class="icon">💸</div>Já tentou anunciar e desperdiçou dinheiro sem retorno</div>
+      <div class="pain-item"><div class="icon">😩</div>Sabe que seu produto é bom mas não consegue fazer as pessoas comprarem</div>
+      <div class="pain-item"><div class="icon">🤔</div>Não sabe configurar o Meta, o Business Suite ou criar um anúncio do zero</div>
+      <div class="pain-item"><div class="icon">😰</div>Recebe leads no WhatsApp mas não sabe como fechar a venda</div>
+    </div>
+
+    <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:14px;padding:20px;font-size:15px;color:#ccc;line-height:1.8;">
+      👉 <strong style="color:#fff">Este ebook foi criado exatamente para resolver isso.</strong> Um método simples, testado, que funciona para qualquer negócio local ou produto físico — mesmo que você nunca tenha anunciado antes.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     FUNIL
+═══════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">O Método</div>
+    <h2 class="section-title">Um funil de 3 etapas<br>para <span class="green">vender todos os dias</span></h2>
+
+    <div class="funnel-visual">
+      <div class="funnel-step funnel-top">
+        <div class="funnel-icon">📘</div>
+        <div>
+          <div class="funnel-label">TOPO — Atração (Facebook + Instagram)</div>
+          <div class="funnel-sub">Anúncios pagos que alcançam o público certo e geram interesse no seu produto</div>
+        </div>
+      </div>
+      <div class="funnel-arrow">↓</div>
+      <div class="funnel-step funnel-mid">
+        <div class="funnel-icon">🗂️</div>
+        <div>
+          <div class="funnel-label">MEIO — Organização (Meta Business Suite)</div>
+          <div class="funnel-sub">Gestão de leads, etiquetas e acompanhamento de cada contato captado</div>
+        </div>
+      </div>
+      <div class="funnel-arrow">↓</div>
+      <div class="funnel-step funnel-bot">
+        <div class="funnel-icon">💬</div>
+        <div>
+          <div class="funnel-label">FUNDO — Conversão (WhatsApp)</div>
+          <div class="funnel-sub">Scripts de venda, quebra de objeções e fechamento direto no WhatsApp</div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:14px;color:var(--muted);text-align:center;margin-top:16px">Funciona para qualquer nicho — produto físico, serviço local ou negócio digital.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     O QUE VOCÊ RECEBE
+═══════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">O que está incluído</div>
+    <h2 class="section-title">Tudo que você recebe<br>por apenas <span class="green">197 MT</span></h2>
+
+    <div class="product-card">
+      <h3>📗 EBOOK COMPLETO — Guia Prático de Vendas Online</h3>
+      <ul>
+        <li>Configuração profissional das páginas no Facebook e Instagram</li>
+        <li>Vinculação no Meta Business Suite passo a passo</li>
+        <li>Como criar criativos (imagens e vídeos) que param o scroll</li>
+        <li>Estrutura de copywriting para anúncios que vendem</li>
+        <li>Configuração de campanhas no Ads Manager do zero</li>
+        <li>Gestão de leads: como organizar e acompanhar cada contacto</li>
+        <li>Técnicas de conversão e fechamento de vendas no WhatsApp</li>
+        <li>Políticas do Meta: o que pode e o que reprova anúncios</li>
+        <li>Estratégias de escala: como multiplicar os resultados</li>
+      </ul>
+    </div>
+
+    <div class="section-eyebrow" style="margin-top:32px">Bônus exclusivos</div>
+    <h3 style="font-family:var(--serif);font-size:1.6rem;text-transform:uppercase;color:#fff;margin-bottom:20px">Bônus que valem mais que o ebook</h3>
+
+    <div class="bonus-grid">
+      <div class="bonus-card">
+        <div class="bonus-num">B1</div>
+        <div class="bonus-content">
+          <h4>🎁 Scripts Prontos de WhatsApp</h4>
+          <p>Mensagens prontas para saudação inicial, quebra de objeções, fechamento e follow-up. Copie, adapte e use hoje mesmo.</p>
+        </div>
+        <div class="bonus-value">GRÁTIS</div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-num">B2</div>
+        <div class="bonus-content">
+          <h4>🎁 Modelos de Criativos</h4>
+          <p>Ideias de anúncios prontos para produtos físicos, negócios locais e serviços. Saiba exatamente o que publicar.</p>
+        </div>
+        <div class="bonus-value">GRÁTIS</div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-num">B3</div>
+        <div class="bonus-content">
+          <h4>🎁 Estruturas de Copy Prontas</h4>
+          <p>Templates de texto para Facebook Ads, Instagram Ads e Status do WhatsApp — só preencher com seu produto.</p>
+        </div>
+        <div class="bonus-value">GRÁTIS</div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-num">B4</div>
+        <div class="bonus-content">
+          <h4>🎁 Checklist de Campanhas</h4>
+          <p>Lista completa do que verificar antes de publicar qualquer anúncio. Evite os erros que desperdiçam dinheiro.</p>
+        </div>
+        <div class="bonus-value">GRÁTIS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     QUEBRA DE OBJEÇÃO
+═══════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">Suas dúvidas, respondidas</div>
+    <h2 class="section-title">Nenhuma desculpa<br>vai te segurar</h2>
+
+    <div class="objection-box">
+      <div class="q">💬 "Mas eu nunca anunciei antes..."</div>
+      <div class="a">Perfeito. Este material foi criado <strong>exatamente para iniciantes</strong>. Tudo é explicado passo a passo, com prints e exemplos reais. Você vai desde a criação da página até o primeiro anúncio no ar.</div>
+    </div>
+
+    <div class="objection-box">
+      <div class="q">💬 "Não tenho tempo para aprender tudo isso..."</div>
+      <div class="a">O guia foi feito para ser aplicado em pedaços. Você pode configurar as páginas hoje, criar o primeiro anúncio amanhã. <strong>30 minutos por dia é suficiente para começar.</strong></div>
+    </div>
+
+    <div class="objection-box">
+      <div class="q">💬 "E se não funcionar para o meu negócio?"</div>
+      <div class="a">O método funciona para <strong>qualquer produto físico ou serviço local</strong>. Restaurante, pet shop, loja de roupa, salão, produto importado — o funil é o mesmo. Só os criativos mudam.</div>
+    </div>
+
+    <div class="objection-box">
+      <div class="q">💬 "197 MT é caro para mim agora..."</div>
+      <div class="a">Uma única venda que este método ajudar a fechar já paga o investimento <strong>várias vezes</strong>. O risco é continuar postando sem resultado.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">Resultados reais</div>
+    <h2 class="section-title">Quem aplicou<br><span class="green">está vendendo</span></h2>
+
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-header">
+          <div class="testi-avatar">👩</div>
+          <div>
+            <div class="testi-name">Beatriz M.</div>
+            <div class="testi-role">Loja de roupas · Maputo</div>
+          </div>
+        </div>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Antes postava todos os dias e não recebia nada. Apliquei o método, criei meu primeiro anúncio e na primeira semana já tinha 12 mensagens de clientes novos. Vendi mais em 7 dias do que no mês inteiro."</div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-header">
+          <div class="testi-avatar">👨</div>
+          <div>
+            <div class="testi-name">Carlos A.</div>
+            <div class="testi-role">Restaurante · Beira</div>
+          </div>
+        </div>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Nunca tinha mexido com anúncio. Segui o passo a passo da configuração e em 3 dias o anúncio estava no ar. Os scripts do WhatsApp mudaram tudo — começo a conversa diferente e fecho muito mais pedidos."</div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-header">
+          <div class="testi-avatar">👩</div>
+          <div>
+            <div class="testi-name">Fátima S.</div>
+            <div class="testi-role">Produtos importados · Nampula</div>
+          </div>
+        </div>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"O checklist antes de anunciar salvou meu dinheiro. Eu ia cometer vários erros que o guia me alertou. Agora sei exatamente o que verificar. Meu CPL caiu pela metade comparado a quando anunciava sem estratégia."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     ORDER BUMP
+═══════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">Oferta especial exclusiva</div>
+    <h2 class="section-title">Adicione ao seu pedido<br>por <span class="yellow">apenas mais 97 MT</span></h2>
+
+    <div class="order-bump">
+      <div class="order-bump-badge">🎁 ORDER BUMP — Adicione ao seu pedido</div>
+      <h3>📦 Lista de Fornecedores + Produtos Validados para Vender em Moçambique</h3>
+      <p class="order-bump-sub">
+        Além de aprender a vender, descubra <strong>o que vender</strong>. Uma lista curada de fornecedores nacionais e produtos 100% validados — com demanda comprovada no mercado moçambicano — para você começar a faturar ainda este mês.
+      </p>
+
+      <div class="order-bump-products">
+        <div class="ob-product">
+          <div class="ob-product-icon">🏭</div>
+          <div>
+            <span class="ob-product-title">Fornecedores Nacionais Verificados</span>
+            Contactos directos, sem intermediários, com produtos já validados no mercado local
+          </div>
+        </div>
+        <div class="ob-product">
+          <div class="ob-product-icon">📊</div>
+          <div>
+            <span class="ob-product-title">Produtos com Alta Demanda</span>
+            Categorias com maior procura: organização doméstica, beleza, casa & decoração, tech acessível
+          </div>
+        </div>
+        <div class="ob-product">
+          <div class="ob-product-icon">💰</div>
+          <div>
+            <span class="ob-product-title">Margens de Lucro Sugeridas</span>
+            Estimativa de markup por categoria para você já saber o potencial de lucro antes de comprar
+          </div>
+        </div>
+        <div class="ob-product">
+          <div class="ob-product-icon">🚀</div>
+          <div>
+            <span class="ob-product-title">Mini-scripts de Anúncio por Produto</span>
+            Copy pronto adaptado para cada categoria de produto listada
+          </div>
+        </div>
+      </div>
+
+      <div class="order-bump-price">
+        <span class="ob-original">Valor normal: 297 MT</span>
+        <span class="ob-price">+ 97 MT</span>
+        <span class="ob-economy">economia de 200 MT</span>
+      </div>
+
+      <label class="checkbox-label" onclick="toggleBump(this)">
+        <input type="checkbox" id="bump-check">
+        <div class="custom-checkbox" id="bump-box"></div>
+        <div class="checkbox-text">
+          ✅ SIM! Quero adicionar a Lista de Fornecedores + Produtos Validados por mais 97 MT
+          <small>Clique para adicionar ao seu pedido antes de ir ao checkout</small>
+        </div>
+      </label>
+    </div>
+
+    <!-- Countdown again -->
+    <div class="countdown-wrap">
+      <div class="countdown-label">⏱️ Esta oferta completa expira em:</div>
+      <div class="countdown-timer">
+        <div class="cd-block"><span class="cd-num" id="cd-h2">00</span><span class="cd-label">Horas</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block"><span class="cd-num" id="cd-m2">00</span><span class="cd-label">Min</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block"><span class="cd-num" id="cd-s2">00</span><span class="cd-label">Seg</span></div>
+      </div>
+    </div>
+
+    <div class="pulse-arrow">↓</div>
+    <a href="https://checkout.escalepay.com/9952614" onclick="trackPixel('AddToCart')">
+      <button class="cta-primary" id="main-cta-btn">
+        🚀 QUERO A MÁQUINA DE VENDAS — 197 MT
+      </button>
+    </a>
+    <div class="cta-sub">
+      🔒 Checkout seguro · Acesso imediato · <span>Garantia de 7 dias</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     GARANTIA
+═══════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="guarantee-box">
+      <div class="guarantee-icon">🛡️</div>
+      <div class="guarantee-text">
+        <h3>Garantia Incondicional de 7 Dias</h3>
+        <p>Se você aplicar o conteúdo e não ver resultado nenhum — ou simplesmente não gostar — nos primeiros 7 dias após a compra, devolvemos <strong>100% do seu dinheiro</strong>. Sem burocracia, sem perguntas. O risco é zero. A decisão é sua.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     FAQ
+═══════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">FAQ</div>
+    <h2 class="section-title">Perguntas frequentes</h2>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Como vou receber o ebook? <div class="faq-toggle">+</div></div>
+      <div class="faq-a">Imediatamente após a confirmação do pagamento, você recebe o link de acesso por e-mail. O acesso é vitalício e pode ser feito pelo celular ou computador.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Precisa ter experiência em marketing? <div class="faq-toggle">+</div></div>
+      <div class="faq-a">Não. O material foi pensado para iniciantes completos. Tudo começa do zero — desde a criação da página até o primeiro anúncio publicado.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Funciona para qualquer tipo de negócio? <div class="faq-toggle">+</div></div>
+      <div class="faq-a">Sim. O método é aplicável a negócios locais (restaurantes, salões, pet shops, lojas) e produtos físicos. Desde que você tenha algo para vender, o funil funciona.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Precisa gastar muito em anúncios? <div class="faq-toggle">+</div></div>
+      <div class="faq-a">Não. O guia mostra como começar com orçamentos acessíveis (150–300 MT/dia) e escalar gradualmente conforme os resultados aparecem.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">E se eu não gostar? <div class="faq-toggle">+</div></div>
+      <div class="faq-a">Você tem 7 dias de garantia incondicional. Se não ficar satisfeito por qualquer motivo, devolvemos o valor integral. Sem perguntas.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">O conteúdo funciona para Moçambique? <div class="faq-toggle">+</div></div>
+      <div class="faq-a">Sim. O material foi desenhado com o mercado moçambicano em mente — exemplos, orçamentos e estratégias adaptados à realidade local.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     FINAL CTA
+═══════════════════════════════════ -->
+<section class="final-cta-section">
+  <div class="container" style="text-align:center">
+    <div class="section-eyebrow">Última chamada</div>
+    <h2 class="section-title">Chega de postar<br>sem <span class="green">resultado</span></h2>
+    <p style="font-size:16px;color:#aaa;max-width:480px;margin:0 auto 32px;line-height:1.8">
+      Hoje você tem a escolha: continuar tentando no escuro, ou ter um método comprovado nas mãos em menos de 5 minutos.
+    </p>
+
+    <div class="price-block" style="max-width:400px;margin:0 auto 24px">
+      <div class="price-badge">ACESSO IMEDIATO</div>
+      <div style="font-size:14px;color:var(--muted)">Ebook completo + 4 Bônus</div>
+      <div class="price-original">De 497 MT</div>
+      <div class="price-now">197 MT</div>
+    </div>
+
+    <a href="https://checkout.escalepay.com/9952614" onclick="trackPixel('Purchase')">
+      <button class="cta-primary" style="max-width:500px;margin:0 auto">
+        🚀 QUERO COMEÇAR A VENDER AGORA
+      </button>
+    </a>
+    <div class="cta-sub" style="margin-top:12px">
+      🔒 Pagamento seguro · 🛡️ Garantia de 7 dias · ⚡ Acesso imediato
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     FOOTER
+═══════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <p style="margin-bottom:12px;font-size:13px;color:#666">
+      <strong style="color:#888">Máquina de Vendas Online</strong> — Guia Prático de Vendas com Facebook, Instagram e WhatsApp
+    </p>
+    <p style="margin-bottom:16px;font-size:12px;line-height:1.8;color:#555">
+      Este produto é um ebook digital entregue por via electrónica. Os resultados variam conforme a aplicação de cada pessoa.
+      Não garantimos resultados específicos. A garantia de 7 dias aplica-se exclusivamente ao reembolso do valor pago.
+    </p>
+    <p style="font-size:11px;color:#444">
+      © 2025 Máquina de Vendas Online · Todos os direitos reservados ·
+      <a href="mailto:suporte@maquinadevendas.co.mz">Contacto</a>
+    </p>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════ -->
+<script>
+/* ── META PIXEL EVENTS ── */
+function trackPixel(event, data) {
+  if(typeof fbq !== 'undefined') {
+    fbq('track', event, data || {});
+  }
+}
+
+/* ── COUNTDOWN (24h rodando) ── */
+function initCountdown() {
+  const key = 'mvp_deadline';
+  let deadline = localStorage.getItem(key);
+  if(!deadline) {
+    deadline = Date.now() + 24 * 60 * 60 * 1000;
+    localStorage.setItem(key, deadline);
+  }
+  function update() {
+    const diff = Math.max(0, deadline - Date.now());
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const fmt = (n) => String(n).padStart(2,'0');
+    const hStr = fmt(h), mStr = fmt(m), sStr = fmt(s);
+    // main
+    const cdH = document.getElementById('cd-h');
+    const cdM = document.getElementById('cd-m');
+    const cdS = document.getElementById('cd-s');
+    if(cdH) cdH.textContent = hStr;
+    if(cdM) cdM.textContent = mStr;
+    if(cdS) cdS.textContent = sStr;
+    // secondary
+    const cdH2 = document.getElementById('cd-h2');
+    const cdM2 = document.getElementById('cd-m2');
+    const cdS2 = document.getElementById('cd-s2');
+    if(cdH2) cdH2.textContent = hStr;
+    if(cdM2) cdM2.textContent = mStr;
+    if(cdS2) cdS2.textContent = sStr;
+    // top bar
+    const topCd = document.getElementById('top-cd');
+    if(topCd) topCd.textContent = `${hStr}:${mStr}:${sStr}`;
+  }
+  update();
+  setInterval(update, 1000);
+}
+initCountdown();
+
+/* ── STICKY BAR on scroll ── */
+window.addEventListener('scroll', () => {
+  const bar = document.getElementById('sticky-bar');
+  if(window.scrollY > 400) bar.classList.add('visible');
+  else bar.classList.remove('visible');
+
+  // Progress bar
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = (window.scrollY / docH) * 100;
+  document.getElementById('read-progress').style.width = pct + '%';
+});
+
+/* ── NOTIFICATION POPUP ── */
+const notifData = [
+  {emoji:'😊', name:'Maria de Maputo', msg:'acabou de comprar o ebook', time:'há 2 min'},
+  {emoji:'🧑', name:'João da Beira', msg:'adquiriu o método completo', time:'há 5 min'},
+  {emoji:'👩', name:'Fátima de Nampula', msg:'comprou + o Order Bump', time:'há 8 min'},
+  {emoji:'🧔', name:'Carlos de Matola', msg:'acabou de comprar', time:'há 12 min'},
+  {emoji:'👩‍💼', name:'Ana de Chimoio', msg:'adquiriu a Máquina de Vendas', time:'há 15 min'},
+  {emoji:'👨‍💼', name:'Pedro de Maputo', msg:'comprou o guia completo', time:'há 19 min'},
+  {emoji:'😄', name:'Lucia de Tete', msg:'acabou de comprar o ebook', time:'há 22 min'},
+];
+let notifIdx = 0;
+function showNotif() {
+  const popup = document.getElementById('notif-popup');
+  const n = notifData[notifIdx % notifData.length];
+  document.getElementById('notif-emoji').textContent = n.emoji;
+  document.getElementById('notif-name').textContent = n.name;
+  document.getElementById('notif-msg').textContent = n.msg;
+  document.getElementById('notif-time').textContent = n.time;
+  popup.classList.add('show');
+  setTimeout(() => popup.classList.remove('show'), 4000);
+  notifIdx++;
+}
+setTimeout(() => {
+  showNotif();
+  setInterval(showNotif, 12000);
+}, 6000);
+
+/* ── ORDER BUMP TOGGLE ── */
+function toggleBump(label) {
+  const box = document.getElementById('bump-box');
+  const btn = document.getElementById('main-cta-btn');
+  const isChecked = box.classList.contains('checked');
+  if(isChecked) {
+    box.classList.remove('checked');
+    btn.textContent = '🚀 QUERO A MÁQUINA DE VENDAS — 197 MT';
+  } else {
+    box.classList.add('checked');
+    btn.textContent = '🚀 QUERO TUDO — EBOOK + FORNECEDORES — 294 MT';
+    trackPixel('AddToCart', {value: 294, currency: 'MZN'});
+  }
+}
+
+/* ── FAQ TOGGLE ── */
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  item.classList.toggle('open');
+}
+
+/* ── TRACK PURCHASE INTENT ── */
+document.querySelectorAll('a[href*="escalepay"]').forEach(a => {
+  a.addEventListener('click', () => {
+    trackPixel('InitiateCheckout', {value: 197, currency: 'MZN', content_name: 'Maquina de Vendas Online'});
+  });
+});
+</script>
+
+</body>
+</html>
